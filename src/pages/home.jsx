@@ -17,6 +17,7 @@ import useCurrentUser from "../hooks/useCurrentUser";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { getSession, useSession } from "next-auth/react";
+import { RingLoader } from "react-spinners";
 
 const EditProfile = ({ children }) => {
   const [show, setShow] = useState({
@@ -39,6 +40,7 @@ const EditProfile = ({ children }) => {
     validate: edit_validation,
     onSubmit: async () => {
       try {
+        setIsLoading(true);
         const response = await axios.patch("/api/edit", {
           email: formik.values.email,
           password: formik.values.password,
@@ -54,6 +56,8 @@ const EditProfile = ({ children }) => {
       } catch (error) {
         console.log(error);
         toast.error("Something went wrong.");
+      } finally {
+        setIsLoading(false);
       }
     },
   });
@@ -154,7 +158,6 @@ const EditProfile = ({ children }) => {
                   </span>
                 </div>
               </div>
-
               <div>
                 <span
                   className={`flex items-start text-rose-600 ${
@@ -215,7 +218,6 @@ const EditProfile = ({ children }) => {
                   </span>
                 </div>
               </div>
-
               <div
                 className={`flex border rounded-xl relative ${
                   formik.errors.password && formik.touched.password
@@ -240,8 +242,13 @@ const EditProfile = ({ children }) => {
                   <HiFingerPrint size={25} />
                 </span>
               </div>
-
-              <Button onClick={formik.handleSubmit}>Update</Button>
+              <Button onClick={formik.handleSubmit}>
+                {isLoading ? (
+                  <RingLoader color="#fff" loading={isLoading} size={24} />
+                ) : (
+                  "Update"
+                )}
+              </Button>
             </form>
           </section>
         </div>

@@ -18,7 +18,7 @@ export default function Home() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-indigo-400 to-indigo-700 text-white">
         <h1 className="text-4xl font-bold mb-8">Welcome to Much Auth</h1>
-        <p className="text-lg mb-12">Made by Amirah, in one one day</p>
+        <p className="text-lg mb-12">Made by Amirah, in one day</p>
         <div>
           <Link
             className="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white text-lg"

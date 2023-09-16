@@ -4,7 +4,7 @@ const AuthLayout = ({ children }) => {
       <div className="m-auto bg-slate-50 rounded-md w-3/5 h-3/4 grid lg:grid-cols-2">
         <div className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-500 rounded-l-md">
           <div
-            className="absolute inset-0 bg-center bg-no-repeat bg-[url('/assets/login3.png')] bg-cover z-1"
+            className="absolute inset-0 bg-center bg-no-repeat lg:block bg-[url('/assets/login3.png')] bg-cover z-1"
             style={{ backgroundPosition: "50% 50%", backgroundSize: "80%" }}
           ></div>
         </div>

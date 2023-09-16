@@ -13,6 +13,7 @@ import { useFormik } from "formik";
 import { login_validation } from "../libs/validation";
 import { toast } from "react-hot-toast";
 import { getSession, useSession } from "next-auth/react";
+import { RingLoader } from "react-spinners";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -130,7 +131,13 @@ const Login = () => {
             </div>
           </div>
           <div>
-            <Button onClick={formik.handleSubmit}>Login</Button>
+            <Button onClick={formik.handleSubmit}>
+              {isLoading ? (
+                <RingLoader color="#fff" loading={isLoading} size={24} />
+              ) : (
+                "Login"
+              )}
+            </Button>
           </div>
 
           <div>

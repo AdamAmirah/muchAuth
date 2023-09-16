@@ -17,6 +17,7 @@ import { signIn } from "next-auth/react";
 import { useFormik } from "formik";
 import { signup_validation } from "../libs/validation";
 import { useRouter } from "next/router";
+import { RingLoader } from "react-spinners";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -274,7 +275,13 @@ const Register = () => {
             </div>
           </div>
           <div>
-            <Button onClick={formik.handleSubmit}>Create</Button>
+            <Button onClick={formik.handleSubmit}>
+              {isLoading ? (
+                <RingLoader color="#fff" loading={isLoading} size={24} />
+              ) : (
+                "Create"
+              )}
+            </Button>
           </div>
         </form>
 
