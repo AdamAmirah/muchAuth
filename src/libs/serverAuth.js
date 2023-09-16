@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 
 const serverAuth = async (req, res) => {
   const session = await getServerSession(req, res, authOptions);
-  console.log(session);
   if (!session?.user?.email) {
     throw new Error("Unauthorized");
   }

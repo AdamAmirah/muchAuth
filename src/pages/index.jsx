@@ -7,7 +7,6 @@ import { getSession, useSession } from "next-auth/react";
 export default function Home() {
   // handle session
   const { data: session } = useSession();
-  console.log(session);
   const reloadSession = () => {
     const event = new Event("visibilitychange");
     document.dispatchEvent(event);
